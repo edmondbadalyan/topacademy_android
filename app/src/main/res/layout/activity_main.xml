@@ -2,19 +2,221 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tw_title"
+    <!-- Верхняя волна/фон -->
+    <View
+        android:id="@+id/topShape"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="?attr/colorPrimaryContainer"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/textViewLoginTitle"
+        app:layout_constraintHeight_percent="0.45"/>
+
+    <!-- Логотип и текст The Tolet -->
+    <LinearLayout
+        android:id="@+id/headerLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="64dp">
+
+        <ImageView
+            android:id="@+id/imageViewLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher_foreground" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_title"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                android:textColor="?android:attr/textColorPrimary" />
+
+            <TextView
+                android:id="@+id/textViewSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_subtitle"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:textColor="?android:attr/textColorSecondary" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Switch для смены темы -->
+    <Switch
+        android:id="@+id/themeSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Заголовок Login -->
+    <TextView
+        android:id="@+id/textViewLoginTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_title"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
+        android:textColor="?android:attr/textColorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/textInputLayoutEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/headerLayout"
+        android:layout_marginTop="64dp"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:hintEnabled="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewLoginTitle"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email_hint"
+            android:inputType="textEmailAddress"
+            style="@style/Widget.App.EditText"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Поле Password -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:hintEnabled="false"
+        app:passwordToggleEnabled="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutEmail"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password_hint"
+            android:inputType="textPassword"
+            style="@style/Widget.App.EditText"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Забыли пароль? -->
+    <TextView
+        android:id="@+id/textViewForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forgot_password"
+        android:textAppearance="@style/TextAppearance.App.Link"
+        app:layout_constraintEnd_toEndOf="@id/textInputLayoutPassword"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutPassword"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Кнопка Log In -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/login_button"
+        style="@style/Widget.App.Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewForgotPassword"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"/>
+
+    <!-- Разделитель -->
+    <TextView
+        android:id="@+id/textViewOrContinue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/or_continue_with"
+        android:textAppearance="@style/TextAppearance.App.Caption"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonLogin"
+        android:layout_marginTop="32dp"/>
+
+    <!-- Кнопки Google и Facebook -->
+    <LinearLayout
+        android:id="@+id/socialButtonsLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewOrContinue"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonGoogle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/google_button"
+            android:drawableLeft="@android:drawable/ic_dialog_info"
+            app:icon="@android:drawable/ic_dialog_info"
+            app:iconTint="?android:attr/textColorPrimary"
+            app:iconGravity="textStart"
+            style="@style/Widget.App.Button.Outlined"
+            android:layout_marginEnd="8dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonFacebook"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/facebook_button"
+            android:drawableLeft="@android:drawable/ic_dialog_info"
+            app:icon="@android:drawable/ic_dialog_info"
+            app:iconTint="?android:attr/textColorPrimary"
+            app:iconGravity="textStart"
+            style="@style/Widget.App.Button.Outlined"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+    <!-- Нет аккаунта? Создать сейчас -->
+    <TextView
+        android:id="@+id/textViewCreateAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="32dp"
+        android:text="@string/create_account_text"
+        android:textAppearance="@style/TextAppearance.App.Body2"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,12 @@
 package com.example.topacademy_android
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.topacademy_android.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
-    companion object{
-        private const val ON_CREATE = "ON_CREATE"
-    }
-
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,30 +14,22 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Log.i(ON_CREATE, "Активити создана!")
-    }
+        // Set initial state of the theme switch
+        binding.themeSwitch.isChecked = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
 
-    override fun onStart() {
-        super.onStart()
-    }
+        binding.themeSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                // Switch to dark theme
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                // Switch to light theme
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
 
-    override fun onResume() {
-        super.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-    }
-
-    override fun onStop() {
-        super.onStop()
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
+        binding.buttonLogin.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CalcButton" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">24dp</item>
+        <item name="android:backgroundTint">#F3F3F3</item>
+        <item name="android:textColor">#222222</item>
+        <item name="elevation">4dp</item>
+        <item name="android:layout_margin">6dp</item>
+    </style>
+    <style name="CalcButtonOrange" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">24dp</item>
+        <item name="android:backgroundTint">#FF9800</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="elevation">4dp</item>
+        <item name="android:layout_margin">6dp</item>
+    </style>
+</resources>

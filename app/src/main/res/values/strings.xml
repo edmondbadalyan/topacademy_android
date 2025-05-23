@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TopacAdemy_android</string>
+    <string name="my_name">Бадалян Эдмонд</string>
+    <string name="start_button">Начать</string>
 </resources>
