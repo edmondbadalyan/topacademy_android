@@ -2,4 +2,50 @@
     <string name="app_name">TopacAdemy_android</string>
     <string name="my_name">Бадалян Эдмонд</string>
     <string name="start_button">Начать</string>
+    
+    <!-- Login Screen Strings -->
+    <string name="app_title">The Tolet</string>
+    <string name="app_subtitle">Find Your House</string>
+    <string name="login_title">Login</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="forgot_password">Forgot?</string>
+    <string name="login_button">Log In</string>
+    <string name="or_continue_with">Or continue with</string>
+    <string name="google_button">Google</string>
+    <string name="facebook_button">Facebook</string>
+    <string name="create_account_text">Don\'t have account? Create now</string>
+    
+    <!-- Home Screen Strings -->
+    <string name="calculator_button">Калькулятор</string>
+    <string name="list_button">Список</string>
+    <string name="weather_button">Погода</string>
+    
+    <!-- Calculator Screen Strings -->
+    <string name="calc_display_default">0</string>
+    <string name="calc_clear">C</string>
+    <string name="calc_percent">%</string>
+    <string name="calc_divide">÷</string>
+    <string name="calc_backspace">⌫</string>
+    <string name="calc_seven">7</string>
+    <string name="calc_eight">8</string>
+    <string name="calc_nine">9</string>
+    <string name="calc_multiply">×</string>
+    <string name="calc_four">4</string>
+    <string name="calc_five">5</string>
+    <string name="calc_six">6</string>
+    <string name="calc_minus">-</string>
+    <string name="calc_one">1</string>
+    <string name="calc_two">2</string>
+    <string name="calc_three">3</string>
+    <string name="calc_plus">+</string>
+    <string name="calc_plus_minus">+/-</string>
+    <string name="calc_zero">0</string>
+    <string name="calc_decimal">,</string>
+    <string name="calc_equals">=</string>
+    
+    <!-- Toolbar Titles -->
+    <string name="title_calculator">Калькулятор</string>
+    <string name="title_list">Список автомобилей</string>
+    <string name="title_weather">Погода</string>
 </resources>
