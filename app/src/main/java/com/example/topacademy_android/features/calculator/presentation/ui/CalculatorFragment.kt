@@ -1,47 +1,55 @@
 package com.example.topacademy_android.features.calculator.presentation.ui
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.topacademy_android.R
-import com.example.topacademy_android.databinding.ActivityCalculatorBinding
+import com.example.topacademy_android.databinding.FragmentCalculatorBinding
 import com.example.topacademy_android.features.calculator.presentation.viewmodel.CalculatorViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CalculatorActivity : AppCompatActivity() {
+class CalculatorFragment : Fragment() {
     
-    private lateinit var binding: ActivityCalculatorBinding
+    private var _binding: FragmentCalculatorBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: CalculatorViewModel by viewModel()
     
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityCalculatorBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentCalculatorBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+    
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupToolbar()
         setupObservers()
         setupClickListeners()
     }
     
     private fun setupToolbar() {
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        
         binding.toolbar.setNavigationOnClickListener {
-            finish()
+            findNavController().navigateUp()
         }
     }
     
     private fun setupObservers() {
-        viewModel.currentExpression.observe(this) { expression ->
+        viewModel.currentExpression.observe(viewLifecycleOwner) { expression ->
             binding.tvHistory.text = expression
         }
         
-        viewModel.result.observe(this) { result ->
+        viewModel.result.observe(viewLifecycleOwner) { result ->
             binding.tvResult.text = result
         }
         
-        viewModel.error.observe(this) { error ->
+        viewModel.error.observe(viewLifecycleOwner) { error ->
             error?.let {
                 val message = when (it) {
                     "calc_error_empty_expression" -> getString(R.string.calc_error_empty_expression)
@@ -49,7 +57,7 @@ class CalculatorActivity : AppCompatActivity() {
                     "calc_error_calculation" -> getString(R.string.calc_error_calculation)
                     else -> it
                 }
-                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -78,7 +86,12 @@ class CalculatorActivity : AppCompatActivity() {
         binding.btnEquals.setOnClickListener { viewModel.calculate() }
         
         binding.btnPercent.setOnClickListener {
-            Toast.makeText(this, getString(R.string.calc_percent_not_implemented), Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.calc_percent_not_implemented), Toast.LENGTH_SHORT).show()
         }
+    }
+    
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 } 

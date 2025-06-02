@@ -45,12 +45,15 @@
     <string name="calc_equals">=</string>
     
     <!-- Toolbar Titles -->
+    <string name="title_main">Вход</string>
+    <string name="title_home">Главная</string>
     <string name="title_calculator">Калькулятор</string>
     <string name="title_list">Список автомобилей</string>
     <string name="title_weather">Погода</string>
+    <string name="title_weather_detail">Детали погоды</string>
     
     <!-- Weather Screen Strings -->
-    <string name="weather_loading">Загрузка погоды...</string>
+    <string name="weather_loading">Загрузка погоды…</string>
     <string name="weather_error">Ошибка загрузки данных</string>
     <string name="weather_retry">Повторить</string>
     <string name="weather_feels_like">Ощущается как %d°</string>
@@ -61,9 +64,6 @@
     <string name="weather_tomorrow">Завтра</string>
     <string name="weather_current_location">Текущее местоположение</string>
     <string name="weather_5_day_forecast">Прогноз на 5 дней</string>
-    
-    <!-- Weather Detail Screen -->
-    <string name="title_weather_detail">Подробно</string>
     
     <!-- Weather Detail Labels -->
     <string name="feels_like">Ощущается как</string>
@@ -76,4 +76,14 @@
     <string name="calc_error_incomplete_expression">Выражение не завершено</string>
     <string name="calc_error_calculation">Ошибка вычисления</string>
     <string name="calc_percent_not_implemented">Функция процента пока не реализована</string>
+    
+    <!-- Content Descriptions -->
+    <string name="cd_app_logo">Логотип приложения</string>
+    <string name="cd_weather_icon">Иконка погоды</string>
+    <string name="cd_detail_icon">Иконка детали</string>
+    
+    <!-- Format Strings -->
+    <string name="weather_temperature_value">%d°</string>
+    <string name="weather_percentage_value">%d%%</string>
+    <string name="weather_location_format">%s, %s</string>
 </resources>
