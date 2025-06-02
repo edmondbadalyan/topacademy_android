@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.topacademy_android.features.main.presentation.ui.MainFragment"
+        android:label="@string/title_main"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_main_to_home"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.topacademy_android.features.home.presentation.ui.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_calculator"
+            app:destination="@id/calculatorFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_home_to_list"
+            app:destination="@id/listFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_home_to_weather"
+            app:destination="@id/weatherFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/calculatorFragment"
+        android:name="com.example.topacademy_android.features.calculator.presentation.ui.CalculatorFragment"
+        android:label="@string/title_calculator"
+        tools:layout="@layout/fragment_calculator" />
+
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.example.topacademy_android.features.carlist.presentation.ui.ListFragment"
+        android:label="@string/title_list"
+        tools:layout="@layout/fragment_list" />
+
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.example.topacademy_android.features.weather.presentation.ui.WeatherFragment"
+        android:label="@string/title_weather"
+        tools:layout="@layout/fragment_weather">
+        <action
+            android:id="@+id/action_weather_to_weather_detail"
+            app:destination="@id/weatherDetailFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/weatherDetailFragment"
+        android:name="com.example.topacademy_android.features.weather.presentation.ui.WeatherDetailFragment"
+        android:label="@string/title_weather_detail"
+        tools:layout="@layout/fragment_weather_detail">
+        <argument
+            android:name="dateTime"
+            app:argType="long" />
+        <argument
+            android:name="temperature"
+            app:argType="integer" />
+        <argument
+            android:name="feelsLike"
+            app:argType="integer" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="humidity"
+            app:argType="integer" />
+        <argument
+            android:name="windSpeed"
+            app:argType="float" />
+        <argument
+            android:name="precipitation"
+            app:argType="integer" />
+        <argument
+            android:name="weatherType"
+            app:argType="string" />
+    </fragment>
+
+</navigation> 
